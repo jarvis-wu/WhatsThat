@@ -15,6 +15,7 @@ class MainViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var confidenceLabel: UILabel!
     @IBOutlet weak var screenshotButton: UIButton!
     
     
@@ -58,8 +59,8 @@ class MainViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
             DispatchQueue.main.async {
                 let name = firstObservation.identifier
                 let confidence = firstObservation.confidence * 100
-                let resultString = "\(name) (\(confidence)%)"
-                self.resultLabel.text = resultString
+                self.resultLabel.text = name
+                self.confidenceLabel.text = "\(confidence)%"
             }
 
         }

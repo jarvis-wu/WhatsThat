@@ -28,8 +28,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XW6-Fg-hPr">
-                                <rect key="frame" x="187.5" y="637" width="0.0" height="0.0"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XW6-Fg-hPr">
+                                <rect key="frame" x="20" y="599" width="335" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -44,22 +44,33 @@
                                     <action selector="screenshotButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sok-Tn-2v1"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ER-7e-pVZ">
+                                <rect key="frame" x="187" y="633" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ZiO-bc-VdN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="4Rt-93-3ZB"/>
                             <constraint firstItem="ZiO-bc-VdN" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="7w9-jE-5py"/>
                             <constraint firstItem="M3m-Y7-xlb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="57" id="CRM-Cv-f7o"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XW6-Fg-hPr" secondAttribute="bottom" constant="30" id="I26-iZ-Pva"/>
+                            <constraint firstItem="XW6-Fg-hPr" firstAttribute="top" secondItem="M3m-Y7-xlb" secondAttribute="bottom" constant="10" id="Fos-V9-qxl"/>
+                            <constraint firstItem="1ER-7e-pVZ" firstAttribute="top" secondItem="XW6-Fg-hPr" secondAttribute="bottom" constant="10" id="KYT-6F-piF"/>
                             <constraint firstItem="M3m-Y7-xlb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="MeS-E2-jub"/>
+                            <constraint firstItem="1ER-7e-pVZ" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="NIt-1t-wdL"/>
                             <constraint firstItem="XW6-Fg-hPr" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="cJm-El-5Bk"/>
                             <constraint firstAttribute="trailing" secondItem="M3m-Y7-xlb" secondAttribute="trailing" id="nkJ-2w-5lh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XW6-Fg-hPr" secondAttribute="trailing" constant="20" id="oyw-5D-B9G"/>
+                            <constraint firstItem="XW6-Fg-hPr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="uCF-R8-YVR"/>
                             <constraint firstItem="M3m-Y7-xlb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="zEa-9U-deC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="cameraView" destination="M3m-Y7-xlb" id="pnS-LH-SXl"/>
+                        <outlet property="confidenceLabel" destination="1ER-7e-pVZ" id="7m1-5X-3wi"/>
                         <outlet property="resultLabel" destination="XW6-Fg-hPr" id="xwJ-kJ-VWW"/>
                         <outlet property="screenshotButton" destination="Pck-b6-Ksb" id="Bsa-OA-AFY"/>
                     </connections>
