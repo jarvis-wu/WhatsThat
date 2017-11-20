@@ -34,6 +34,14 @@
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pck-b6-Ksb">
+                                <rect key="frame" x="313" y="33" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Snap"/>
+                                <connections>
+                                    <action selector="screenshotButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sok-Tn-2v1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -51,6 +59,7 @@
                     <connections>
                         <outlet property="cameraView" destination="M3m-Y7-xlb" id="pnS-LH-SXl"/>
                         <outlet property="resultLabel" destination="XW6-Fg-hPr" id="xwJ-kJ-VWW"/>
+                        <outlet property="screenshotButton" destination="Pck-b6-Ksb" id="Bsa-OA-AFY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

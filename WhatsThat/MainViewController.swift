@@ -9,11 +9,13 @@
 import UIKit
 import AVKit
 import Vision // an API built on CoreML
+import Photos
 
 class MainViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var screenshotButton: UIButton!
     
     
     override func viewDidLoad() {
@@ -52,6 +54,7 @@ class MainViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
             guard let firstObservation = results.first else { return }
             // print(firstObservation.identifier, firstObservation.confidence) // for test
             
+            // Use dispatch queue here because "updating UI outside main thread is not permitted"
             DispatchQueue.main.async {
                 let name = firstObservation.identifier
                 let confidence = firstObservation.confidence * 100
@@ -62,7 +65,47 @@ class MainViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         }
         try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
     }
-
+    
+    @IBAction func screenshotButtonTapped(_ sender: Any) {
+        switch PHPhotoLibrary.authorizationStatus() {
+        case .authorized:
+            takeScreenshot()
+        case .denied, .restricted:
+            let alertController = UIAlertController(title: "Photo access denied", message: "Please enable Photos Library access for this appliction in Settings > Privacy.", preferredStyle: UIAlertControllerStyle.alert)
+            let actionOK = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(actionOK)
+            present(alertController, animated: true, completion: nil)
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization({ (status) in
+                if status == .authorized {
+                    self.takeScreenshot()
+                }
+            })
+        }
+    }
+    
+    func takeScreenshot() {
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        self.view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        //view.layer.render(in: UIGraphicsGetCurrentContext()!)
+        if let image = UIGraphicsGetImageFromCurrentImageContext() {
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        }
+        UIGraphicsEndImageContext()
+        
+        // flash the screen here
+        DispatchQueue.main.async {
+            let flashOverlay = UIView(frame: self.view.frame)
+            flashOverlay.backgroundColor = UIColor.white
+            self.view.addSubview(flashOverlay)
+            UIView.animate(withDuration: 0.5, animations: {
+                flashOverlay.alpha = 0.0
+            }, completion: { _ in
+                flashOverlay.removeFromSuperview()
+            })
+        }
+    }
+    
 
 }
 
